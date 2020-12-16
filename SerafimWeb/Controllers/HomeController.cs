@@ -53,7 +53,7 @@ namespace SerafimeWeb.Controllers
                 FullName = "Roman_cezar@mail.ru",
                 Email = "Roman_cezar@mail.ru",
                 Birthdate = Convert.ToDateTime("23.07.1992"),
-                Address = "г.Пенза, ул.Калинина д.104А кв.3",
+                Address = "г.Пенза, ул.Калинина д.104А  кв.3",
                 PhoneNumber = "+79023540178",
                 PhoneNumberConfirmed = true,
                 EmailConfirmed = true
