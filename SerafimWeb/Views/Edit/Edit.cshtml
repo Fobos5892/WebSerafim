@@ -1,0 +1,77 @@
+﻿@model SerafimeWeb.ViewModels.EditViewModel
+@{
+    ViewBag.Title = "Редактирование пользователя";
+}
+<h2>Редактирование пользователя</h2>
+
+<form asp-action="Edit" asp-controller="Edit">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input type="text" readonly="readonly" asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input type="text" asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Birthdate"></label>
+        <input type="date" asp-for="Birthdate" class="form-control" />
+        <span asp-validation-for="Birthdate"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input type="text" asp-for="Address" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input type="text" asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+
+    <div>
+        <label asp-for="IdentityUserRole"></label><br />
+        @Html.DropDownList("roleString", Html.GetEnumSelectList(typeof(SerafimeWeb.ViewModels.RolesList)))
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NewPassword"></label>
+        <input type="password" asp-for="NewPassword" class="form-control" />
+        <span asp-validation-for="NewPassword"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NewPasswordConfirm"></label>
+        <input type="password" asp-for="NewPasswordConfirm" class="form-control" />
+    </div>
+
+
+
+    @if (!String.IsNullOrEmpty(ViewBag.Notification))
+    {
+        <label>@ViewBag.Notification</label>
+    }
+    <div class="form-group">
+        <input type="submit" value="Сохранить" class="btn btn-primary" />
+
+    </div>
+
+
+</form>

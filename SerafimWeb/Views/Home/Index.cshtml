@@ -1,0 +1,27 @@
+﻿@model SerafimeWeb.Models.User
+@{
+    ViewData["Title"] = "Домашняя страница";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Добро пожаловать в приложение @User.Identity.Name !</p>
+    if (User.IsInRole("admin"))
+    {
+        <p>Вы имеете права Администратора</p>
+    }
+    else if (User.IsInRole("user"))
+    {
+        <p>
+            Вы имеете обычные права
+        </p>
+    }
+    else
+    {
+        <p>Ваши права не установлены</p>
+    }
+    <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="OnAlarm">Тревога</a>
+}
+else
+{
+    <p>Вы должны войти или зарегистрироваться!</p>
+}

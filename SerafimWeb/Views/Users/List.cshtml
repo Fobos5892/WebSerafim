@@ -1,0 +1,44 @@
+﻿@model SerafimeWeb.ViewModels.ListViewModel
+@{
+    ViewBag.Title = "Список пользователей";
+}
+<h2>Список пользователей</h2>
+
+<table class="table">
+    <tr>
+        <th>Логин</th>
+        <th>ФИО</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+
+    @foreach (var user in Model.Users)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.FullName</td>
+            <td>@user.Email</td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+
+                    if (User.IsInRole("admin"))
+                    {
+                        <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                            <a class="btn btn-sm btn-primary" asp-controller="Edit" asp-action="Edit" asp-route-id="@user.Id">Изменить</a>
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Удалить
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <p>Действия недоступны. </p>
+                        <p>Доступ только с административными правами!</p>
+                    }
+                }
+
+            </td>
+        </tr>
+    }
+    </table>
